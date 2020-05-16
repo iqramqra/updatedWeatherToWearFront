@@ -1,22 +1,23 @@
 import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom'
 
+import UserDashboard from './container/UserDashboard'
+
+
 class App extends React.Component {
 
   render() {
     return (
       <div>
         {/* <NavBar/> */}
-        <Switch>
-        {/* 
+        <UserDashboard/>
+        {/* <Switch> 
           <Route path='/login' render={this.renderLoginForm}/>
           <Route path='/login' render={this.renderLoginForm}/>
           <Route path='/login' render={this.renderLoginForm}/>
           <Route path='/login' render={this.renderLoginForm}/>
           <Route path='/login' render={this.renderLoginForm}/>
-         */}
-
-        </Switch>
+        </Switch> */}
       </div>
     )
   }
