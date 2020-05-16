@@ -1,26 +1,15 @@
 import React from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom'
+import './App.css';
 
-import UserDashboard from './container/UserDashboard'
+import SideBar from './Container/SideBar'
 
-
-class App extends React.Component {
-
-  render() {
-    return (
-      <div>
-        {/* <NavBar/> */}
-        <UserDashboard/>
-        {/* <Switch> 
-          <Route path='/login' render={this.renderLoginForm}/>
-          <Route path='/login' render={this.renderLoginForm}/>
-          <Route path='/login' render={this.renderLoginForm}/>
-          <Route path='/login' render={this.renderLoginForm}/>
-          <Route path='/login' render={this.renderLoginForm}/>
-        </Switch> */}
-      </div>
-    )
-  }
+function App() {
+  return (
+    <div className="App">
+      <h1>User Dashboard</h1>
+      <SideBar/>
+    </div>
+  );
 }
 
-export default withRouter(App);
+export default App;
