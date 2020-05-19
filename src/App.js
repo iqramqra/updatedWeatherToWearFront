@@ -6,7 +6,7 @@ import Header from './components/Header'
 import SideBar from './Container/SideBar'
 import UserDeck from './Container/UserDeck'
 import SplashScreen from './components/SplashScreen'
-import Form from './components/Form'
+import Form from './components/LoginForm'
 import NotFound from './components/NotFound'
 
 
@@ -64,7 +64,7 @@ class App extends React.Component{
   }
 
   handleLoginSubmit = (userInfo) => {
-    fetch(`http://localhost:3000/login`, {
+    fetch(`http://localhost:3000/login/`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -75,65 +75,50 @@ class App extends React.Component{
     .then(this.handleResponse)
   }
 
-  handleRegiserSubmit = (userInfo) => {
-    fetch(`http://localhost:3000/users`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(userInfo)
-    })
-    .then(r => r.json())
-    .then(this.handleResponse) 
-  }
+  // handleRegiserSubmit = (userInfo) => {
+  //   fetch(`http://localhost:3000/users`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'content-type': 'application/json'
+  //     },
+  //     body: JSON.stringify(userInfo)
+  //   })
+  //   .then(r => r.json())
+  //   .then(this.handleResponse) 
+  // }
 
   renderSplashScreen = () => {
     return <SplashScreen/>
   }
 
-  renderUserDeck = (routerProps) => {
-    // return value is what gets slapped on the DOM
-    // Components being returned cannot call lifecycle methods nicely
-    let slugFromURL = routeProps.match.params.username
-    console.log(slugFromURL);
-    let foundUser = this.state.user.find(user => {
-      return user.slug === slugFromURL
-    })
+  // renderUserDeck = (routerProps) => {
+  //   // return value is what gets slapped on the DOM
+  //   // Components being returned cannot call lifecycle methods nicely
+  //   let slugFromURL = routerProps.match.params.username
+  //   console.log(slugFromURL);
+  //   let foundUser = this.state.user.find(user => {
+  //     return user.slug === slugFromURL
+  //   })
 
-    if (foundUser) {
-      return <UserDeck/>
-    } else {
-      return <NotFound/>
-    }
+  //   if (foundUser) {
+  //     return <UserDeck/>
+  //   } else {
+  //     return <NotFound/>
+  //   }
     
-  } 
+  // } 
 
   render(){
     return (
       <div className="App">
-        {/* <header className='app-header'>
-          <Header/>
-        </header>
-
-        <aside className='sidebar'>
-
-        </aside> */}
-        {/* Header displays the logged in users avatar */}
-
+        <Header/>
         <Switch>
+          {/* SplashScreen */}
+          <Route exact path = '/' render={this.renderSplashScreen}/>
           <Route path='/login' render={this.renderForm}/>
           <Route path='/register' render={this.renderForm}/>
-          {/* SplashScreen */}
-          <Route path='/' render={this.renderSplashScreen}/>
-          <Route path='/user/:username' render={this.renderUserDeck}/>
+          {/* <Route path='/user/:username' render={this.renderUserDeck}/> */}
         </Switch>
-        
-        {/* SIDE BAR Pass in the logged in user Info  */}
-        {/* <SideBar/> */}
-        
-        {/*  USER DECK CONTAINER Pass in the loged in user Info */}
-        {/* <UserDeck/> */}
-
       </div>
     );
   }

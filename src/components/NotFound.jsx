@@ -3,7 +3,7 @@ import React from 'react'
 function NotFound() {
     return (
         <div>
-            <Go Back to the home page>
+            Go Back to the home page
         </div>
     )
 }
