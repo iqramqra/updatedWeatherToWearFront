@@ -1,23 +1,25 @@
 import React from 'react'
-// import { Link } from "react-router-dom";
+import CityForm from './CityForm'
 
-import {Avatar, Grid} from '@material-ui/core';
-import { spacing } from '@material-ui/system';
+import Avatar from '@material-ui/core/Avatar';
+import Grid from '@material-ui/core/Grid';
 
-function header() {
+function Header() {
     return (
-        <Grid container spacing={10}>
-            <Grid item xs={6}>
-                W2W
-            </Grid>
 
-            <Grid item xs={6}>
-                <Avatar alt="User Name" src="/static/images/avatar/1.jpg" />
-                {/* <Link to='/signin'> Sign In </Link> */}
+        <Grid container spacing= {3}>
+           
+            {/* search input field for city */}
+            <Grid item xs={12} sm={6}>
+            <CityForm/>
+                {/* <input type = 'text' className='searchBar' placeholder='Search by city'/> */}
+            </Grid>
+            {/* User Login */}
+            <Grid item xs={12} sm={6}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
             </Grid>
         </Grid>
-
     )
 }
 
-export default header
+export default Header

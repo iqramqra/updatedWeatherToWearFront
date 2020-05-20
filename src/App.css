@@ -1,21 +1,59 @@
-.App {
-  /* background-color: #727272; */
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
-  font-size: calc(10px + 2vmin);
-  color: white;
-  padding-left: 0.5em;
+.App{
+  font-family: 'Oswald', sans-serif;
+  align-content: center;
+  text-align: center;
 }
 
-.sideBar{
-  background-color: #FF0079;
-  max-width: 288px;
-  border-radius: 6px;
+/* Search Field */
+.searchBar{
+  border-radius: 30px;
+  border: 1px solid #293241;
+  width: 50%;
+  height: 33px;
+  text-align: center;
+}
 
-  padding-left: 30px;
-  /* height: 400px; */
+.weatherContainer{
+  margin: 16px;
+}
+
+.dailyCardContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 16px;
+}
+
+.mainWeatherCard{
+  /* margin: 16px; */
+  text-align: left;
+  background-color: #EFE4D3;
+  border-radius: 30px;
+  width: auto;
+  height: 550px;
+}
+
+.mainWeatherInfo{
+  font-family: 'Oswald', sans-serif; 
+  text-align: left;
+  font-size: 25pt;
+  padding-left: 2%;
+  padding-top: 0.01em;
+  margin-left: 20px;
+}
+
+.wthrConditionText{
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.dayCard{
+  padding: 16px;
+  margin: 12px;
+  height: auto;
+  /* width: inherit; */
+  width: 220px;
+  background-color:#E07A5F;
+  border-radius: 15px;
 }
