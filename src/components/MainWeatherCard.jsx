@@ -9,13 +9,18 @@ const CityWeatherCard = ({reading}) => {
     
     return (
         <div className= 'mainWeatherCard'>
-            <img src={Brooklyn} alt='city'/>
             <div className='mainWeatherInfo'>
                 {/* Temp goes here */}
-                <h1 className= 'wthrConditionText'>{Math.round(reading.main.temp)}°F</h1>
+                <h1 className= 'wthrConditionText'>{Math.round(reading.main.temp)}°F
+                
+                {/* icon */}
+                </h1>
+                <i className='wi wi-day-sunny display-1'> </i>
                 {/* Condition goes here */}
                 <h6 className='wthrConditionText'>{reading.weather[0].description}</h6>
+
             </div>
+            {/* <img src={Brooklyn} alt='city'/> */}
          </div>
     )
 }

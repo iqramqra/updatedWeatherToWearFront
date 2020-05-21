@@ -3,6 +3,8 @@ import MainWeatherCard from '../components/MainWeatherCard'
 import DayCard from '../components/DayCard'
 
 const WeatherContainer = (props) => {
+    // console.log(props);
+    
     let  dataDayCard = () => {
         return props.dailyWeatherData.map((reading, index) => <DayCard reading={reading} key={index}/>)
     }

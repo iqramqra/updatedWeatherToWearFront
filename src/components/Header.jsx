@@ -4,14 +4,15 @@ import CityForm from './CityForm'
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 
-function Header() {
+function Header(props) {
+    // console.log(props);
     return (
 
         <Grid container spacing= {3}>
            
             {/* search input field for city */}
             <Grid item xs={12} sm={6}>
-            <CityForm/>
+                <CityForm zipCode={props.zipCode} handleSearchTerm={props.handleSearchTerm} getData={props.getData}/>
                 {/* <input type = 'text' className='searchBar' placeholder='Search by city'/> */}
             </Grid>
             {/* User Login */}
