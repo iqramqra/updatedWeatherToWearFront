@@ -10,8 +10,8 @@ import WeatherContainer from './containers/WeatherContainer'
 class App extends React.Component{
 
   // TASKS
-  // RENDER NAME OF CITY ON TO THE MAIN WEATHER CONTAINER
-  // REMOVE THE WEATHER ICON FROM THE MAINI WEATHER CONTAINER
+  // [x] RENDER NAME OF CITY ON TO THE MAIN WEATHER CONTAINER
+  // [x] REMOVE THE WEATHER ICON FROM THE MAINI WEATHER CONTAINER
   // RENDER THE WEATHER ICONS TO THE 5 DAY WEATHER CARDS
   // AUTH USER LOGIN
   // USER ABLE TO POST NEW IMGS OF OUTFITS (FORM TO DEFINE OUTFITS, ADD A DROPDOWN TO SELECT THE SEASON FOR THE OUTFIT)
@@ -70,9 +70,7 @@ class App extends React.Component{
       })
   }
   
-
   // Redering pages and passing down info here
-  
   renderWeatherContainer = () => {
     return <WeatherContainer dailyWeatherData={this.state.dailyWeatherData} cityNameWD={this.state.cityNameWD}/>
   }

@@ -14,7 +14,7 @@ const CityForm = (props) => {
     }
 
     return (
-        <form>
+        <div className='zipCodeForm'>
             <input type='text'
                 id='zipCode'
                 name='zipCode'
@@ -24,10 +24,10 @@ const CityForm = (props) => {
                 onChange={helpWithChange}
                 value = {props.zipCode}
                 />
-            <div className='searchBtn'> 
-                <button type='submit' value='sumbit' onClick={handleSubmit}>Get Weather</button>
-            </div>
-        </form>
+            <button className= 'zipCodeBtn' type='submit' value='sumbit' onClick={handleSubmit}>Get Weather</button>
+            {/* <div className='searchBtn'> 
+            </div> */}
+        </div>
     )
 }
 

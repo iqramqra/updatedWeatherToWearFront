@@ -9,7 +9,6 @@ function Header(props) {
     return (
 
         <Grid container spacing= {3}>
-           
             {/* search input field for city */}
             <Grid item xs={12} sm={6}>
                 <CityForm zipCode={props.zipCode} handleSearchTerm={props.handleSearchTerm} getData={props.getData}/>
