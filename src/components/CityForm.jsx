@@ -1,21 +1,20 @@
 import React from 'react'
 
 const CityForm = (props) => {
-//    console.log(props);
-   
+    
     const helpWithChange = (e) => {
         props.handleSearchTerm(e.target.value);
     }
-
+    // sends up the zipcide eneterd by the user to the getData() in the app.js 
     const handleSubmit = (e) => {
         e.preventDefault()
         var text = document.getElementById('zipCode').value;
+        // sending up the value of 'text' to the getData fn in app.js
         props.getData(text)
-        // console.log(text)
     }
 
     return (
-        <form onSubmit = {props.changeZipCode}>
+        <form>
             <input type='text'
                 id='zipCode'
                 name='zipCode'
@@ -33,18 +32,3 @@ const CityForm = (props) => {
 }
 
 export default CityForm;
-
-// handleSearchTerm = (e) => {
-//     if (e.key === 'enter') {
-//       fetch (`http://api.openweathermap.org/data/2.5/forecast?zip=${this.state.zipCode}&units=imperial&appid=a6cb209a99baafd785ecd07da0491103`)
-//       .then (r => r.json())
-//       .then(r => {
-//         const _dailyWeatherData = r.list.filter(reading => reading.dt_txt.includes('18:00:00'))
-//         this.setState({
-//           fullWeatherData: r.list,
-//           dailyWeatherData: _dailyWeatherData
-//         })
-//         console.log(r)
-//       })
-//     }
-//   }

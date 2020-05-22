@@ -9,6 +9,17 @@ import WeatherContainer from './containers/WeatherContainer'
 
 class App extends React.Component{
 
+  // TASKS
+  // RENDER NAME OF CITY ON TO THE MAIN WEATHER CONTAINER
+  // REMOVE THE WEATHER ICON FROM THE MAINI WEATHER CONTAINER
+  // RENDER THE WEATHER ICONS TO THE 5 DAY WEATHER CARDS
+  // AUTH USER LOGIN
+  // USER ABLE TO POST NEW IMGS OF OUTFITS (FORM TO DEFINE OUTFITS, ADD A DROPDOWN TO SELECT THE SEASON FOR THE OUTFIT)
+  // USER ABLE TO UPDATE NAME/SEASON OF THE OUTFITS
+  // USER ABLE TO DELETE THE OUTFIT FROM THEIR LIST OF OUTFITS
+  // USER ABLE TO GET RECOMMENDATIOSN BASED ON THE OUTFITS THEY INPUT
+
+
   state={
     user: {
       username:'',
@@ -16,12 +27,14 @@ class App extends React.Component{
       outfits: []
     },
     token: '',
-    fullWeatherData: [],
+    // Get the city name from the api
+    cityNameWD: [],
+    // gets the 5 day forcast from the api
     dailyWeatherData:[],
+    // change it to an empty string!
     zipCode: '11230'
   }
 
-  // USER ZIP Code needs to change
   componentDidMount(){
     fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${this.state.zipCode}&units=imperial&appid=a6cb209a99baafd785ecd07da0491103`)
     // fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${this.state.zipCode}&units=imperial&appid=${apiConfig.owaKey}`)
@@ -29,56 +42,43 @@ class App extends React.Component{
     .then (data => {
       const _dailyWeatherData = data.list.filter(reading => reading.dt_txt.includes('18:00:00'))
       this.setState({
-        fullWeatherData: data.list,
-        dailyWeatherData: _dailyWeatherData
+        cityNameWD: data.city,
+        dailyWeatherData: _dailyWeatherData,
+        // cityNameWeatherData: _cityNameWeatherData
       })
     })
   }
   
-
-  // // handles zipcode passedin in the form
-
-  // constructor(props){
-  //   super(props)
-  //   this.handleZipCode = this.handleZipCode.bind(this)
-  //   this.componentDidMount = this.componentDidMount.bind(this)
-  // }
-
-
+  // Takes in the user Zipcode info
   handleSearchTerm = (userZipCode) => {
     this.setState({
       zipCode: userZipCode
     })
   }
 
+  // renders the weather data for the zipcode entered by the user
   getData = (e) => {
-    console.log(e)
-    if (e.key === 'enter') {
+    // console.log(e)
       fetch (`http://api.openweathermap.org/data/2.5/forecast?zip=${e}&units=imperial&appid=a6cb209a99baafd785ecd07da0491103`)
       .then (r => r.json())
       .then(r => {
         const _dailyWeatherData = r.list.filter(reading => reading.dt_txt.includes('18:00:00'))
         this.setState({
-          fullWeatherData: r.list,
+          cityNameWD: r.city,
           dailyWeatherData: _dailyWeatherData
         })
-        console.log(r)
       })
-    }
   }
   
 
   // Redering pages and passing down info here
   
   renderWeatherContainer = () => {
-    return <WeatherContainer dailyWeatherData={this.state.dailyWeatherData}/>
+    return <WeatherContainer dailyWeatherData={this.state.dailyWeatherData} cityNameWD={this.state.cityNameWD}/>
   }
-
-  
   
   render(){
-    console.log(this.state);
-    // console.log(this.state.zipCode);
+    // console.log(this.state);
     return (
       <div className="App">
         <Header handleSearchTerm={this.handleSearchTerm} zipCode={this.state.zipCode} getData={this.getData}/>
