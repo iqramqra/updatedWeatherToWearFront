@@ -19,7 +19,7 @@ const DayCard = ({reading}) => {
             {/* Weather Icon */}
             <h4>IMG GOES HERE</h4>
             {/* Temp */}
-            <h2>{Math.round(reading.main.temp)}°F</h2>
+            <h2>{Math.round(reading.main.temp)}°f</h2>
             <p>{reading.weather[0].description}</p>
         </div>
     )

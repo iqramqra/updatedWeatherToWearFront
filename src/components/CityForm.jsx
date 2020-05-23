@@ -15,6 +15,7 @@ const CityForm = (props) => {
 
     return (
         <div className='zipCodeForm'>
+            <form>
             <input type='text'
                 id='zipCode'
                 name='zipCode'
@@ -24,9 +25,9 @@ const CityForm = (props) => {
                 onChange={helpWithChange}
                 value = {props.zipCode}
                 />
-            <button className= 'zipCodeBtn' type='submit' value='sumbit' onClick={handleSubmit}>Get Weather</button>
-            {/* <div className='searchBtn'> 
-            </div> */}
+                {/* <onsubmit type='submit' value='submit' onClick={handleSubmit}/> */}
+            <button className= 'zipCodeBtn' type='submit' value='submit' onClick={handleSubmit}>Get Weather</button>
+           </form>
         </div>
     )
 }

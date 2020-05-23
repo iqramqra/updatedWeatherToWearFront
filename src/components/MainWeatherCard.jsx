@@ -10,10 +10,11 @@ const CityWeatherCard = (props) => {
             <div className='mainWeatherInfo'>
                 <h6 className='cityName'>{name}</h6>
                 {/* Temp goes here */}
-                <h1 className= 'wthrConditionTmp'>{Math.round(props.reading.main.temp)} °F
+                <h1 className= 'wthrConditionTmp'>{Math.round(props.reading.main.temp)} °f
                 {/* icon */}
                 </h1>
-                {/* <i className='wi wi-day-sunny display-1'> </i> */}
+                {/* THIS NEEDS TO CHANGE TO CONDITIONAL RENDERING */}
+                {/* <i className='wi wi-day-sunny display-1'/> */}
                 {/* Condition goes here */}
                 {/* <h6 className='wthrConditionText'>{props.reading.weather[0].main}</h6> */}
                 <h6 className='wthrConditionText'>{props.reading.weather[0].description}</h6>
