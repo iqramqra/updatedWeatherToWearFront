@@ -32,7 +32,7 @@ class App extends React.Component{
     // gets the 5 day forcast from the api
     dailyWeatherData:[],
     // change it to an empty string!
-    zipCode: '11230'
+    zipCode: ''
   }
 
   componentDidMount(){
@@ -43,10 +43,10 @@ class App extends React.Component{
       const _dailyWeatherData = data.list.filter(reading => reading.dt_txt.includes('18:00:00'))
       this.setState({
         cityNameWD: data.city,
-        dailyWeatherData: _dailyWeatherData,
-        // cityNameWeatherData: _cityNameWeatherData
+        dailyWeatherData: _dailyWeatherData
       })
     })
+    .catch(console.error)
   }
   
   // Takes in the user Zipcode info
@@ -68,6 +68,7 @@ class App extends React.Component{
           dailyWeatherData: _dailyWeatherData
         })
       })
+      .catch(console.error)
   }
   
   // Redering pages and passing down info here

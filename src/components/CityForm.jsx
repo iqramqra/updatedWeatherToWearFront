@@ -15,7 +15,8 @@ const CityForm = (props) => {
 
     return (
         <div className='zipCodeForm'>
-            <form>
+            <form onSubmit={console.log('hi')}>
+            <div>{props.error ? error() : ''}</div>
             <input type='text'
                 id='zipCode'
                 name='zipCode'
@@ -28,6 +29,14 @@ const CityForm = (props) => {
                 {/* <onsubmit type='submit' value='submit' onClick={handleSubmit}/> */}
             <button className= 'zipCodeBtn' type='submit' value='submit' onClick={handleSubmit}>Get Weather</button>
            </form>
+        </div>
+    )
+}
+
+const error = props => {
+    return(
+        <div>
+            <h2>Please Enter your zipcode</h2>
         </div>
     )
 }
