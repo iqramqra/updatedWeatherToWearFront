@@ -1,15 +1,14 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import CityForm from './CityForm'
-
-import Avatar from '@material-ui/core/Avatar';
+// Matrial UI components
 import Grid from '@material-ui/core/Grid';
 import Menu from '@material-ui/core/Menu';
-
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-function Header(props) {
+const Header = (props) => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -23,50 +22,26 @@ function Header(props) {
     };
     // console.log(props);
     return (
-
         <Grid container spacing= {3}>
             {/* search input field for city */}
             <Grid item xs={12} sm={6}>
                 <CityForm zipCode={props.zipCode} handleSearchTerm={props.handleSearchTerm} getData={props.getData}/>
-                {/* <input type = 'text' className='searchBar' placeholder='Search by city'/> */}
             </Grid>
             {/* User Login */}
             <Grid item xs={12} sm={6}>
-
-            <div>
-
-                {/* ICON BUTTON */}
-                <MenuIcon
-                    aria-label="more"
-                    aria-controls="long-menu"
-                    aria-haspopup="true"
-                    onClick={handleClick}
-                >
-                    <MoreVertIcon />
-                </MenuIcon>
-                <Menu
-                    id="long-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={open}
-                    onClose={handleClose}
-                >
-                    <MenuItem>Login</MenuItem>
-                </Menu>
+                <div>
+                    {/* ICON BUTTON */}
+                    <MenuIcon aria-label="more" aria-controls="long-menu" aria-haspopup="true" onClick={handleClick}>
+                        <MoreVertIcon />
+                    </MenuIcon>
+                    {/* Menu Links */}
+                    <Menu id="long-menu" anchorEl={anchorEl} keepMounted open={open} onClose={handleClose}>
+                        <MenuItem> <NavLink to='/login'> Login </NavLink></MenuItem>
+                        <MenuItem> <NavLink to='/register'> Register </NavLink></MenuItem>
+                    </Menu>
                 </div>
-
-
-
-
-
-
-
-
-
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
             </Grid>
         </Grid>
     )
 }
-
 export default Header

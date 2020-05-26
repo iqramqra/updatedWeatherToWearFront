@@ -1,10 +1,9 @@
 import React from 'react';
 import './App.css';
 import { Switch, Route, withRouter } from 'react-router-dom';
-
-import 'weather-icons/css/weather-icons.css'
 import Header from './components/Header'
 import WeatherContainer from './containers/WeatherContainer'
+import UserForm from './components/UserForm'
 
 
 class App extends React.Component{
@@ -75,6 +74,14 @@ class App extends React.Component{
   renderWeatherContainer = () => {
     return <WeatherContainer dailyWeatherData={this.state.dailyWeatherData} cityNameWD={this.state.cityNameWD}/>
   }
+
+  renderForm = (routerProps) => {
+    if (routerProps.location.pathname === '/login'){
+      return <UserForm formName='Login Form' handleSubmit={this.handleSubmit}/>
+    } else if (routerProps.location.pathname === '/register'){
+      return <UserForm formName='Register Form' handleSubmit={this.handleSubmit}/>
+    }
+  }
   
   render(){
     // console.log(this.state);
@@ -83,8 +90,8 @@ class App extends React.Component{
         <Header handleSearchTerm={this.handleSearchTerm} zipCode={this.state.zipCode} getData={this.getData}/>
         <Switch>
           <Route exact path = '/' render={this.renderWeatherContainer}/>
-          {/* <Route path='/login' render={this.renderForm}/> */}
-          {/* <Route path='/register' render={this.renderForm}/> */}
+          <Route path='/login' render={this.renderForm}/>
+          <Route path='/register' render={this.renderForm}/>
         </Switch>
       </div>
     );
