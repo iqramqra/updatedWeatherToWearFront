@@ -3,7 +3,7 @@ import './App.css';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import Header from './components/Header'
 import WeatherContainer from './containers/WeatherContainer'
-import UserForm from './components/UserForm'
+import UserFormLogin from './components/UserFormLogin'
 
 
 class App extends React.Component{
@@ -99,9 +99,9 @@ class App extends React.Component{
   // User login/register form
   renderForm = (routerProps) => {
     if (routerProps.location.pathname === '/login'){
-      return <UserForm formName='Login' handleSubmit={this.handleLoginSubmit}/>
+      return <UserFormLogin formName='Login' handleSubmit={this.handleLoginSubmit}/>
     } else if (routerProps.location.pathname === '/register'){
-      return <UserForm formName='Register' handleSubmit={this.handleRegisterSubmit}/>
+      return <UserFormLogin formName='Register' handleSubmit={this.handleRegisterSubmit}/>
     }
   }
   
