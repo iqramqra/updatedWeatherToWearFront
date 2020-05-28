@@ -29,11 +29,9 @@ class UserForm extends Component {
       <form className='loginForm' onSubmit={this.handleSubmit}>
     
         <h1>{formName}</h1>
-        <TextField id="outlined-basic" label="Username" variant="outlined" value={username} onChange={this.handleChange} />
-        <TextField id="outlined-basic" type='password' label="Password" variant="outlined" value={password} onChange={this.handleChange} />
-        {/* <input type="text" autoComplete="off" name="username" value={username} onChange={this.handleChange}/> */}
-        {/* <label htmlFor="password">Password:</label> */}
-        {/* <input type="password" autoComplete="off" name="password" value={password} onChange={this.handleChange}/> */}
+        <TextField id="outlined-basic" label="Username" name= 'username' variant="outlined" value={username} onChange={this.handleChange} />
+  
+        <TextField id="outlined-basic" type='password' name='password' label="Password" variant="outlined" value={password} onChange={this.handleChange} />
         <input type="submit" value="Submit"/>
       </form>
     );

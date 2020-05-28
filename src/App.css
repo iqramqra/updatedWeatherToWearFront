@@ -100,3 +100,10 @@
   margin-right: 25%;
   line-height: 40px;
 }
+
+#outlined-basic{
+  background-color: lawngreen;
+  margin: 10px;
+  padding-block: 300px;
+  /* line-height: 100px; */
+}
