@@ -4,6 +4,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import Header from './components/Header'
 import WeatherContainer from './containers/WeatherContainer'
 import UserFormLogin from './components/UserFormLogin'
+import UserFormRegister from './components/UserFormRegister'
 
 
 class App extends React.Component{
@@ -71,7 +72,6 @@ class App extends React.Component{
   }
 
   // USER LOGIN / REGISTER FORM
-
   handleLoginSubmit = (userInfo) => {
     console.log('login Form Submitted');
     fetch('http://localhost:3000/login', {
@@ -86,23 +86,22 @@ class App extends React.Component{
   }
 
   handleRegisterSubmit = () => {
-    console.log('User registered');
-    
+    console.log('User registered');  
   }
   
   // RENDER METHODS 
-
   // Weather Container here
   renderWeatherContainer = () => {
     return <WeatherContainer dailyWeatherData={this.state.dailyWeatherData} cityNameWD={this.state.cityNameWD}/>
   }
-  // User login/register form
-  renderForm = (routerProps) => {
-    if (routerProps.location.pathname === '/login'){
-      return <UserFormLogin formName='Login' handleSubmit={this.handleLoginSubmit}/>
-    } else if (routerProps.location.pathname === '/register'){
-      return <UserFormLogin formName='Register' handleSubmit={this.handleRegisterSubmit}/>
-    }
+  // User login Form
+  renderLoginForm = () => {
+    return < UserFormLogin formName='Login' handleSubmit={this.handleLoginSubmit}/>
+  }
+
+  // User Register Form
+  renderRegisterForm = () => {
+      return <UserFormRegister formName='Register' handleSubmit={this.handleRegisterSubmit}/>
   }
   
   render(){
@@ -112,8 +111,8 @@ class App extends React.Component{
         <Header handleSearchTerm={this.handleSearchTerm} zipCode={this.state.zipCode} getData={this.getData}/>
         <Switch>
           <Route exact path = '/' render={this.renderWeatherContainer}/>
-          <Route path='/login' render={this.renderForm}/>
-          <Route path='/register' render={this.renderForm}/>
+          <Route path='/login' render={this.renderLoginForm}/>
+          <Route path='/register' render={this.renderRegisterForm}/>
         </Switch>
       </div>
     );

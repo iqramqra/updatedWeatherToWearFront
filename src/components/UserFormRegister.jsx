@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 
 import TextField from '@material-ui/core/TextField';
 
-class UserFormLogin extends Component {
+class UserFormRegister extends Component {
 
   state = {
     username: "",
-    password: ""
+    password: "",
+    avatar: ""
   }
 
   handleSubmit = (e) => {
@@ -32,10 +33,13 @@ class UserFormLogin extends Component {
         <TextField id="outlined-basic" label="Username" name= 'username' variant="outlined" value={username} onChange={this.handleChange} />
   
         <TextField id="outlined-basic" type='password' name='password' label="Password" variant="outlined" value={password} onChange={this.handleChange} />
+        {/* <input type="submit" value="Submit"/> */}
+
+        <TextField id="outlined-basic" type='password' name='avatar' label="Avatar" variant="outlined" value={password} onChange={this.handleChange} />
         <input type="submit" value="Submit"/>
       </form>
     )
   }
 }
 
-export default UserFormLogin;
+export default UserFormRegister;
