@@ -89,3 +89,14 @@
   font-weight: bold;
   border-radius: 0px 30px 30px 0px;
 }
+
+.loginForm{
+  display: flex;
+  flex-direction: column;
+  /* background-color:palegreen; */
+  max-width: 50%;
+  align-items: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  line-height: 40px;
+}

@@ -15,7 +15,7 @@ const CityForm = (props) => {
 
     return (
         <div className='zipCodeForm'>
-            <form onSubmit={console.log('hi')}>
+            <form>
             <div>{props.error ? error() : ''}</div>
             <input type='text'
                 id='zipCode'

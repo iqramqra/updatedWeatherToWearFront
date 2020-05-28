@@ -69,17 +69,39 @@ class App extends React.Component{
       })
       .catch(console.error)
   }
+
+  // USER LOGIN / REGISTER FORM
+
+  handleLoginSubmit = (userInfo) => {
+    console.log('login Form Submitted');
+    fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(userInfo)
+    })
+    .then(r => r.json())
+    .then(this.handleResponse)
+  }
+
+  handleRegisterSubmit = () => {
+    console.log('User registered');
+    
+  }
   
-  // Redering pages and passing down info here
+  // RENDER METHODS 
+
+  // Weather Container here
   renderWeatherContainer = () => {
     return <WeatherContainer dailyWeatherData={this.state.dailyWeatherData} cityNameWD={this.state.cityNameWD}/>
   }
-
+  // User login/register form
   renderForm = (routerProps) => {
     if (routerProps.location.pathname === '/login'){
-      return <UserForm formName='Login Form' handleSubmit={this.handleSubmit}/>
+      return <UserForm formName='Login' handleSubmit={this.handleLoginSubmit}/>
     } else if (routerProps.location.pathname === '/register'){
-      return <UserForm formName='Register Form' handleSubmit={this.handleSubmit}/>
+      return <UserForm formName='Register' handleSubmit={this.handleRegisterSubmit}/>
     }
   }
   
