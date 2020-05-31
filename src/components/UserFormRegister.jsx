@@ -24,7 +24,7 @@ class UserFormRegister extends Component {
 
   render() {
     let {formName} = this.props
-    let {username, password} = this.state
+    let {username, password, avatar} = this.state
 
     return (
       // {renderThis}
@@ -35,7 +35,7 @@ class UserFormRegister extends Component {
         <TextField id="outlined-basic" type='password' name='password' label="Password" variant="outlined" value={password} onChange={this.handleChange} />
         {/* <input type="submit" value="Submit"/> */}
 
-        <TextField id="outlined-basic" type='password' name='avatar' label="Avatar" variant="outlined" value={password} onChange={this.handleChange} />
+        <TextField id="outlined-basic" name='avatar' label="Avatar Link" variant="outlined" value={avatar} onChange={this.handleChange} />
         <input type="submit" value="Submit"/>
       </form>
     )
