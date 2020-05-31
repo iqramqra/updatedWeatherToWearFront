@@ -13,7 +13,7 @@ class App extends React.Component{
   // [x] RENDER NAME OF CITY ON TO THE MAIN WEATHER CONTAINER
   // [x] REMOVE THE WEATHER ICON FROM THE MAINI WEATHER CONTAINER
   // RENDER THE WEATHER ICONS TO THE 5 DAY WEATHER CARDS
-  // AUTH USER LOGIN
+  // [x] AUTH USER LOGIN
   // USER ABLE TO POST NEW IMGS OF OUTFITS (FORM TO DEFINE OUTFITS, ADD A DROPDOWN TO SELECT THE SEASON FOR THE OUTFIT)
   // USER ABLE TO UPDATE NAME/SEASON OF THE OUTFITS
   // USER ABLE TO DELETE THE OUTFIT FROM THEIR LIST OF OUTFITS
@@ -36,8 +36,16 @@ class App extends React.Component{
   }
 
   componentDidMount(){
+    if (localStorage.token){
+      fetch('http://localhost:3000/persist', {
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`
+        }
+      })
+      .then(r => r.json())
+      .then(this.handleResponse)
+    }
     fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${this.state.zipCode}&units=imperial&appid=a6cb209a99baafd785ecd07da0491103`)
-    // fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${this.state.zipCode}&units=imperial&appid=${apiConfig.owaKey}`)
     .then (r => r.json())
     .then (data => {
       const _dailyWeatherData = data.list.filter(reading => reading.dt_txt.includes('18:00:00'))
@@ -85,8 +93,29 @@ class App extends React.Component{
     .then(this.handleResponse)
   }
 
-  handleRegisterSubmit = () => {
-    console.log('User registered');  
+  handleRegisterSubmit = (userInfo) => {
+    console.log('User registered');
+    fetch(`http://localhost:3000/users`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(userInfo)
+    })
+    .then(r => r.json())
+    .then(this.handleResponse)  
+  }
+
+  handleResponse = (resp) => {
+    if(resp.user){
+      localStorage.token = resp.token
+      this.setState(resp, () => {
+        this.props.history.push('/')
+      })
+    }
+    else {
+      alert(resp.error)
+    }
   }
   
   // RENDER METHODS 
