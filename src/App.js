@@ -45,6 +45,7 @@ class App extends React.Component{
       .then(r => r.json())
       .then(this.handleResponse)
     }
+    // Fetching the weather here
     fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${this.state.zipCode}&units=imperial&appid=a6cb209a99baafd785ecd07da0491103`)
     .then (r => r.json())
     .then (data => {
@@ -110,7 +111,7 @@ class App extends React.Component{
     if(resp.user){
       localStorage.token = resp.token
       this.setState(resp, () => {
-        this.props.history.push('/user  ')
+        this.props.history.push('/user')
       })
     }
     else {
@@ -134,7 +135,7 @@ class App extends React.Component{
   }
 
   renderUserProfile = () => {
-    return <UserProfile/>
+    return <UserProfile user={this.state.user}/>
   }
   
   render(){
