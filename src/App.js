@@ -5,7 +5,7 @@ import Header from './components/Header'
 import WeatherContainer from './containers/WeatherContainer'
 import UserFormLogin from './components/UserFormLogin'
 import UserFormRegister from './components/UserFormRegister'
-
+import UserProfile from './components/UserProfile'
 
 class App extends React.Component{
 
@@ -110,7 +110,7 @@ class App extends React.Component{
     if(resp.user){
       localStorage.token = resp.token
       this.setState(resp, () => {
-        this.props.history.push('/')
+        this.props.history.push('/user  ')
       })
     }
     else {
@@ -132,6 +132,10 @@ class App extends React.Component{
   renderRegisterForm = () => {
       return <UserFormRegister formName='Register' handleSubmit={this.handleRegisterSubmit}/>
   }
+
+  renderUserProfile = () => {
+    return <UserProfile/>
+  }
   
   render(){
     // console.log(this.state);
@@ -142,6 +146,7 @@ class App extends React.Component{
           <Route exact path = '/' render={this.renderWeatherContainer}/>
           <Route path='/login' render={this.renderLoginForm}/>
           <Route path='/register' render={this.renderRegisterForm}/>
+          <Route path='/user' render={this.renderUserProfile}/>
         </Switch>
       </div>
     );
